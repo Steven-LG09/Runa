@@ -1,0 +1,121 @@
+.body1 {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #7CA982;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #2F5D50;
+}
+
+.buttonDefault {
+    padding: 0.5rem 1rem;
+    border-width: 2px;
+    border-color: #8D6E63;
+    background-color: #EFECE3;
+    color: #8D6E63;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    width: 200px;
+}
+
+.buttonMain {
+    padding: 0.5rem 1rem;
+    border-width: 2px;
+    border-color: #F26A4B;
+    background-color: #EFECE3;
+    color: #F26A4B;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    width: 200px;
+    box-shadow: 0 5px 7px 0 #F26A4B, 0 0 15px 0 #EFECE3;
+}
+
+.buttonDefault:hover {
+    background-color: #8D6E63;
+    color: white;
+}
+
+.buttonMain:hover {
+    background-color: #F26A4B;
+    color: white;
+    box-shadow: 0 12px 16px 0 #F26A4B, 0 17px 50px 0 #EFECE3;
+}
+
+.content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.titleDefault {
+    color: #2F5D50;
+    text-shadow: 3px 3px 5px #EFECE3;
+}
+
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.image-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    background-color: #2F5D50;
+    border-radius: 8px;
+    box-shadow: 0 12px 16px 0 #7CA982, 0 17px 50px 0 black;
+}
+.image-card:hover{
+    box-shadow: 0 12px 16px 0 #8D6E63, 0 17px 50px 0 #7CA982;
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.image-card button {
+    margin: 5px;
+    padding: 0.5rem 1rem;
+    border-width: 2px;
+    border-color: #7CA982;
+    background-color: #EFECE3;
+    color: #2F5D50;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.image-card button:hover {
+    background-color: #7CA982;
+    color: white;
+}
+
+::-webkit-scrollbar {
+
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background-color: #EFECE3;
+    border-radius: 10px;
+    border: 2px solid #2F5D50;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background-color: white;
+}
