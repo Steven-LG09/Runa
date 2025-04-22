@@ -324,11 +324,29 @@
     .blockLogin{
         width: 30%;
     }
+    .formText{
+        width: 25%;
+    }
+    .inputForm,.selectForm{ 
+        width: 45%;
+    }
+    .textTareaForm{
+        width: 60%;
+    }
 }
 
 @media (max-width: 850px) and (min-width: 768px){
     .blockLogin{
         width: 45%;
+    }
+    .formText{
+        width: 25%;
+    }
+    .inputForm,.selectForm{ 
+        width: 45%;
+    }
+    .textTareaForm{
+        width: 60%;
     }
 }
 
@@ -338,5 +356,20 @@
     }
     .blockLogin{
         width: 70%;
+    }
+    .formText{
+        font-size: 15px;
+        width: 40%;
+    }
+    .inputForm,.selectForm{ 
+        width: 45%;
+        font-size: 15px;
+    }
+    .formText2{
+        font-size: 15px;
+    }
+    .textTareaForm{
+        width: 60%;
+        font-size: 15px;
     }
 }
