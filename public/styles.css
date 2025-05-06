@@ -125,6 +125,14 @@
     text-shadow: 3px 3px 5px #5F8B4C;
     font-size: 17px;
 }
+.thanksText {
+    color: rgb(54, 51, 51);
+    text-shadow: 3px 3px 5px #5F8B4C;
+    font-size: 17px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
 
 .formText {
     color: rgb(54, 51, 51);
