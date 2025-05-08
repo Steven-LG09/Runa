@@ -503,6 +503,12 @@
     .textTareaForm {
         width: 60%;
     }
+    .flexCode1 {
+        width: 50%;
+    }
+    .flexCode2 {
+        width: 50%;
+    }
 }
 
 @media (max-width: 850px) and (min-width: 768px) {
@@ -521,6 +527,12 @@
 
     .textTareaForm {
         width: 60%;
+    }
+    .flexCode1 {
+        width: 50%;
+    }
+    .flexCode2 {
+        width: 50%;
     }
 }
 
