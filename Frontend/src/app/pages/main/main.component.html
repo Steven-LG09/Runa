@@ -1,1 +1,19 @@
-<p>main works!</p>
+<div class="navbar animate__animated animate__fadeInDown">
+    <button class="buttonDefault">Home</button>
+    <button class="buttonDefault">About</button>
+    <button class="buttonDefault">Services</button>
+    <button class="buttonDefault">Contact</button>
+    <button class="buttonMain animate__animated animate__pulse animate__infinite">Reservar</button>
+</div>
+
+<div class="content">
+    <h1 class="titleDefault animate__animated animate__fadeInDown animate__delay-1s">
+        Welcome to This Wonderful Place
+    </h1>
+    <div class="image-gallery animate__animated animate__fadeIn animate__delay-2s">
+        <div class="image-card" *ngFor="let n of images">
+            <img [src]="'https://picsum.photos/30' + n" [alt]="'Image ' + n" />
+            <button>View More</button>
+        </div>
+    </div>
+</div>
