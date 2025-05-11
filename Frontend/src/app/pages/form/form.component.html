@@ -1,0 +1,89 @@
+<h1 class="mainName animate__animated animate__fadeInDown">RUNA</h1>
+<p class="subTitle animate__animated animate__fadeIn">Reserva, Unidad, Naturaleza y Acceso</p>
+
+<h2 class="titleMainForm animate__animated animate__fadeInDown">Formulario de Reservas</h2>
+
+<div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="nombre" class="formText">Nombre completo *</label>
+    <input type="text" id="nombre" name="nombre" required class="inputForm" placeholder="Su Nombre Completo"><br>
+</div>
+
+<div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="correo" class="formText">Correo electrónico *</label>
+    <input type="email" id="correo" name="correo" required class="inputForm" placeholder=" Su Correo Electrónico"><br>
+</div>
+
+<div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="telefono" class="formText">Teléfono *</label>
+    <input type="tel" id="telefono" name="telefono" class="inputForm" placeholder="Su Teléfono" required><br>
+</div>
+
+<div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="tipoVisitante" class="formText">Tipo de visitante *</label>
+    <select id="tipoVisitante" name="tipoVisitante" required class="selectForm">
+        <option value="">Seleccione...</option>
+        <option value="individual">Individual</option>
+        <option value="familiar">Grupo familiar</option>
+        <option value="educativa">Institución educativa</option>
+        <option value="empresa">Empresa / Tour</option>
+        <option value="otro">Otro</option>
+    </select><br>
+</div>
+
+<div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="fecha" class="formText">Fecha de la reserva *</label>
+    <input type="date" id="fecha" name="fecha" required class="selectForm"><br>
+</div>
+
+<div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="hora" class="formText">Hora de entrada *</label>
+    <select id="hora" name="hora" required class="selectForm">
+        <option value="">Seleccione...</option>
+        <option value="09:00">09:00</option>
+        <option value="10:00">10:00</option>
+        <option value="11:00">11:00</option>
+        <option value="12:00">12:00</option>
+        <option value="13:00">13:00</option>
+        <option value="14:00">14:00</option>
+    </select><br>
+</div>
+
+<div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="cantidad" class="formText">Cantidad de personas *</label>
+    <input type="number" id="cantidad" name="cantidad" min="1" required class="inputForm" placeholder="Su Cantidad"><br>
+</div>
+
+<div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="tipoRecorrido" class="formText">Tipo de recorrido *</label>
+    <select id="tipoRecorrido" name="tipoRecorrido" required class="selectForm">
+        <option value="">Seleccione...</option>
+        <option value="libre">Recorrido libre</option>
+        <option value="guiado">Visita guiada</option>
+        <option value="taller">Taller temático</option>
+        <option value="evento">Evento especial</option>
+    </select><br>
+</div>
+
+<div class="blockForm animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="comentarios" class="formText2">Comentarios adicionales</label><br>
+    <textarea id="comentarios" name="comentarios" rows="3" class="textTareaForm"></textarea>
+    <div class="checkbox-group">
+        <input type="checkbox" id="accesibilidad" name="accesibilidad">
+        <label for="accesibilidad" class="formText2">Requiere accesibilidad especial</label>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="terminos" name="terminos" required>
+        <label for="terminos" class="formText2">Acepto los términos y condiciones *</label>
+    </div>
+
+    <div class="checkbox-group">
+        <input type="checkbox" id="notificaciones" name="notificaciones">
+        <label for="notificaciones" class="formText2">Deseo recibir recordatorios por correo o WhatsApp</label>
+    </div>
+</div>
+
+<div class="formLines">
+    <button type="submit" class="buttonForm animate__animated animate__pulse animate__infinite">Confirmar
+        reserva</button>
+</div>
