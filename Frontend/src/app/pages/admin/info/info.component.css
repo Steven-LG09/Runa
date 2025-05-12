@@ -1,0 +1,43 @@
+.mainName {
+    color: #2F5D50;
+    text-shadow: 3px 3px 5px #5F8B4C;
+    text-align: center;
+    font-size: 70px;
+    height: 30px;
+}
+
+.subTitle {
+    color: #328E6E;
+    text-shadow: 3px 3px 5px #5F8B4C;
+    text-align: center;
+    font-size: 11px;
+}
+
+.titleMainForm {
+    color: #2F5D50;
+    text-shadow: 3px 3px 5px #5F8B4C;
+    text-align: center;
+}
+
+.reserLines {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+}
+
+.reserText {
+    color: rgb(54, 51, 51);
+    text-shadow: 3px 3px 5px #5F8B4C;
+    font-size: 17px;
+    text-align: right;
+    font-weight: bold;
+    width: 50%;
+}
+
+.reserText2 {
+    color: rgb(54, 51, 51);
+    text-shadow: 3px 3px 5px #5F8B4C;
+    font-size: 17px;
+    margin-left: 7px;
+    width: 50%;
+}
