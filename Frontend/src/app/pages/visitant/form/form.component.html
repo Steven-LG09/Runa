@@ -5,23 +5,23 @@
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="nombre" class="formText">Nombre completo *</label>
-    <input type="text" name="nombre" required class="inputForm" placeholder="Su Nombre Completo"
-       ><br>
+    <input type="text" name="nombre" id="nombre" required class="inputForm" placeholder="Su Nombre Completo" #name><br>
 </div>
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="correo" class="formText">Correo electrónico *</label>
-    <input type="email" id="correo" name="correo" required class="inputForm" placeholder=" Su Correo Electrónico"><br>
+    <input type="email" #email name="correo" id="correo" required class="inputForm"
+        placeholder=" Su Correo Electrónico"><br>
 </div>
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="telefono" class="formText">Teléfono *</label>
-    <input type="tel" id="telefono" name="telefono" class="inputForm" placeholder="Su Teléfono" required><br>
+    <input type="tel" #phone name="telefono" id="telefono" class="inputForm" placeholder="Su Teléfono" required><br>
 </div>
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="tipoVisitante" class="formText">Tipo de visitante *</label>
-    <select id="tipoVisitante" name="tipoVisitante" required class="selectForm">
+    <select #visitorType name="tipoVisitante" id="tipoVisitante" required class="selectForm">
         <option value="">Seleccione...</option>
         <option value="individual">Individual</option>
         <option value="familiar">Grupo familiar</option>
@@ -33,12 +33,12 @@
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="fecha" class="formText">Fecha de la reserva *</label>
-    <input type="date" id="fecha" name="fecha" required class="selectForm"><br>
+    <input type="date" #date name="fecha" id="fecha" required class="selectForm"><br>
 </div>
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="hora" class="formText">Hora de entrada *</label>
-    <select id="hora" name="hora" required class="selectForm">
+    <select #time name="hora" id="hora" required class="selectForm">
         <option value="">Seleccione...</option>
         <option value="09:00">09:00</option>
         <option value="10:00">10:00</option>
@@ -51,12 +51,13 @@
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="cantidad" class="formText">Cantidad de personas *</label>
-    <input type="number" id="cantidad" name="cantidad" min="1" required class="inputForm" placeholder="Su Cantidad"><br>
+    <input type="number" #quantity name="cantidad" id="cantidad" min="1" required class="inputForm"
+        placeholder="Su Cantidad"><br>
 </div>
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="tipoRecorrido" class="formText">Tipo de recorrido *</label>
-    <select id="tipoRecorrido" name="tipoRecorrido" required class="selectForm">
+    <select #walkType name="tipoRecorrido" id="tipoRecorrido" required class="selectForm">
         <option value="">Seleccione...</option>
         <option value="libre">Recorrido libre</option>
         <option value="guiado">Visita guiada</option>
@@ -67,25 +68,27 @@
 
 <div class="blockForm animate__animated animate__fadeInUp animate__delay-1s">
     <label for="comentarios" class="formText2">Comentarios adicionales</label><br>
-    <textarea id="comentarios" name="comentarios" rows="3" class="textTareaForm"></textarea>
+    <textarea #comments name="comentarios" id="comentarios" rows="3" class="textTareaForm"></textarea>
     <div class="checkbox-group">
-        <input type="checkbox" id="accesibilidad" name="accesibilidad">
+        <input type="checkbox" #accesability name="accesibilidad" id="accesibilidad">
         <label for="accesibilidad" class="formText2">Requiere accesibilidad especial</label>
     </div>
 
     <div class="checkbox-group">
-        <input type="checkbox" id="terminos" name="terminos" required>
+        <input type="checkbox" #terms name="terminos" id="terminos" required>
         <label for="terminos" class="formText2">Acepto los términos y condiciones *</label>
     </div>
 
     <div class="checkbox-group">
-        <input type="checkbox" id="notificaciones" name="notificaciones">
+        <input type="checkbox" #notifications name="notificaciones" id="notificaciones">
         <label for="notificaciones" class="formText2">Deseo recibir recordatorios por correo o WhatsApp</label>
     </div>
 </div>
 
 <div class="formLines">
     <button type="submit" class="buttonForm animate__animated animate__pulse animate__infinite"
-        routerLink="/thanks">Confirmar
+        (click)="saveData()">Confirmar
         reserva</button>
 </div>
+
+<div *ngIf="loadingMessage">Cargando...</div>
