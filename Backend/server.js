@@ -34,7 +34,8 @@ const formSchema = new mongoose.Schema({
     comments: String,
     accesability: String,
     terms: String,
-    notifications: String
+    notifications: String,
+    status: String
 });
 
 const Form = mongoose.models[process.env.COLLECTION_NAME] || mongoose.model(process.env.COLLECTION_NAME, formSchema);
@@ -88,7 +89,8 @@ app.post('/form', async (req, res) => {
             comments: sanitizedComments,
             accesability: accesability,
             terms: terms,
-            notifications: notifications
+            notifications: notifications,
+            status: "Pendiente"
         });
         await newEvaluation.save();
 
