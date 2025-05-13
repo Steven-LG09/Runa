@@ -24,7 +24,17 @@ mongoose.connect(process.env.MONGO_URI)
 
 const formSchema = new mongoose.Schema({
     name: String,
-    email: String
+    email: String,
+    phone: String,
+    visitortype: String,
+    date: String,
+    time: String,
+    quantity: String,
+    walktype: String,
+    comments: String,
+    accesability: String,
+    terms: String,
+    notifications: String
 });
 
 const Form = mongoose.models[process.env.COLLECTION_NAME] || mongoose.model(process.env.COLLECTION_NAME, formSchema);
@@ -40,13 +50,26 @@ app.post('/form', async (req, res) => {
     try {
         const {
             name,
-            email
+            email,
+            phone,
+            visitortype,
+            date,
+            time,
+            quantity,
+            walktype,
+            comments,
+            accesability,
+            terms,
+            notifications
         } = req.body;
 
         const sanitizedName = purify.sanitize(name);
         const sanitizedEmail = purify.sanitize(email);
+        const sanitizedPhone = purify.sanitize(phone);
+        const sanitizedQuantity = purify.sanitize(quantity);
+        const sanitizedComments = purify.sanitize(comments);
 
-        if (!sanitizedName || !sanitizedEmail) {
+        if (!sanitizedName || !sanitizedEmail || !sanitizedPhone || !sanitizedQuantity || !sanitizedComments) {
             return res.status(400).json({
                 success: false,
                 message: "Información requerida",
@@ -55,7 +78,17 @@ app.post('/form', async (req, res) => {
 
         const newEvaluation = new Form({
             name: sanitizedName,
-            email: sanitizedEmail
+            email: sanitizedEmail,
+            phone: sanitizedPhone,
+            visitortype: visitortype,
+            date: date,
+            time: time,
+            quantity: sanitizedQuantity,
+            walktype: walktype,
+            comments: sanitizedComments,
+            accesability: accesability,
+            terms: terms,
+            notifications: notifications
         });
         await newEvaluation.save();
 

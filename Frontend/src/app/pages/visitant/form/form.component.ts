@@ -15,6 +15,17 @@ export class FormComponent {
   // Referencias a los inputs del HTML
   @ViewChild('name') nameRef!: ElementRef<HTMLInputElement>;
   @ViewChild('email') emailRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('phone') phoneRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('visitorType') visitorTypeRef!: ElementRef<HTMLSelectElement>;
+  @ViewChild('date') dateRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('time') timeRef!: ElementRef<HTMLSelectElement>;
+  @ViewChild('quantity') quantityRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('walkType') walkTypeRef!: ElementRef<HTMLSelectElement>;
+  @ViewChild('comments') commentsRef!: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('accesability') accesabilityRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('terms') termsRef!: ElementRef<HTMLInputElement>;
+  @ViewChild('notifications') notificationsRef!: ElementRef<HTMLInputElement>;
+
 
   // Variable para mostrar u ocultar el mensaje de carga
   loadingMessage = false;
@@ -27,17 +38,33 @@ export class FormComponent {
     // Obtenemos los valores de los inputs directamente desde el DOM
     const rawName = this.nameRef.nativeElement.value;
     const rawEmail = this.emailRef.nativeElement.value;
+    const rawPhone = this.phoneRef.nativeElement.value;
+    const rawVisitorType = this.visitorTypeRef.nativeElement.value;
+    const rawDate = this.dateRef.nativeElement.value;
+    const rawTime = this.timeRef.nativeElement.value;
+    const rawQuantity = this.quantityRef.nativeElement.value;
+    const rawWalkType = this.walkTypeRef.nativeElement.value;
+    const rawComments = this.commentsRef.nativeElement.value;
+    const accesability = this.accesabilityRef.nativeElement.checked;
+    const terms = this.termsRef.nativeElement.checked;
+    const notifications = this.notificationsRef.nativeElement.checked;
 
     // Sanitizamos los valores para prevenir inyecciones XSS
     const sanitizedName = DOMPurify.sanitize(rawName);
     const sanitizedEmail = DOMPurify.sanitize(rawEmail);
+    const sanitizedPhone = DOMPurify.sanitize(rawPhone);
+    const sanitizedQuantity = DOMPurify.sanitize(rawQuantity);
+    const sanitizedComments = DOMPurify.sanitize(rawComments);
 
     // Asignamos los valores sanitizados de nuevo a los inputs
     this.nameRef.nativeElement.value = sanitizedName;
     this.emailRef.nativeElement.value = sanitizedEmail;
+    this.phoneRef.nativeElement.value = sanitizedPhone;
+    this.quantityRef.nativeElement.value = sanitizedQuantity;
+    this.commentsRef.nativeElement.value = sanitizedComments;
 
     // Validamos que los campos no estén vacíos
-    if (!sanitizedName || !sanitizedEmail) {
+    if (!sanitizedName || !sanitizedEmail || !sanitizedPhone || !sanitizedQuantity || !sanitizedComments) {
       alert('Debes ingresar los campos obligatorios.');
       return;
     }
@@ -49,6 +76,16 @@ export class FormComponent {
     this.http.post<any>('http://localhost:4000/form', {
       name: sanitizedName,
       email: sanitizedEmail,
+      phone: sanitizedPhone,
+      visitortype: rawVisitorType,
+      date: rawDate,
+      time: rawTime,
+      quantity: sanitizedQuantity,
+      walktype: rawWalkType,
+      comments: sanitizedComments,
+      accesability: accesability,
+      terms: terms,
+      notifications: notifications
     }).subscribe({
       next: (result) => {
         // Ocultamos el mensaje de carga
