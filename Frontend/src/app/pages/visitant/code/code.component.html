@@ -7,11 +7,11 @@
         <input type="number" required class="inputCode" placeholder="Su Código" #code><br>
         <button class="buttonCode animate__animated animate__pulse animate__infinite" (click)="search()">Buscar</button>
     </div>
-    <div class="flexCode2 animate__animated animate__fadeInRight animate__delay-2s">
+    <div class="flexCode2 animate__animated animate__fadeInRight " *ngIf="resultado">
         <h2 class="flexTitle">Resultados</h2>
         <div class="flexCode2_1">
             <div class="flexCode2_2">
-                <h4 class="flexTitle2">Nombre de Ejemplo</h4>
+                <h4 class="flexTitle2">{{ resultado.name }}</h4>
             </div>
             <div class="flexCode2_3">
                 <button class="buttonCode2 animate__animated animate__pulse animate__infinite"  routerLink="/newReserv">Reservar</button>
@@ -20,4 +20,4 @@
     </div>
 </div>
 
-<div *ngIf="loadingMessage">Cargando...</div>
+<div *ngIf="loadingMessage" class="loadingMessage">Cargando...</div>

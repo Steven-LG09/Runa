@@ -46,7 +46,6 @@ const purify = DOMPurify(window);
 app.get('/', (req, res) => {
     res.send('Servidor funcionando correctamente');
 });
-
 app.post('/form', async (req, res) => {
     try {
         const {
@@ -102,6 +101,41 @@ app.post('/form', async (req, res) => {
     } catch (error) {
         res.status(500).json({
             error: error.message
+        });
+    }
+});
+app.post('/search', async (req, res) => {
+    try {
+        const {
+            code
+        } = req.body;
+
+        const sanitizedCode = purify.sanitize(code);
+
+        // Validar que haya un código
+        if (!sanitizedCode) {
+            return res.status(400).json({
+                error: 'Código requerido'
+            });
+        }
+
+        // Buscar en la base de datos
+        const resultado = await Form.findOne({
+            phone: sanitizedCode
+        });
+
+        if (!resultado) {
+            return res.status(404).json({
+                error: 'No encontrado'
+            });
+        }
+
+        // Enviar los datos encontrados al frontend
+        res.json(resultado);
+    } catch (err) {
+        console.error('Error en búsqueda:', err);
+        res.status(500).json({
+            error: 'Error en la busqueda'
         });
     }
 });

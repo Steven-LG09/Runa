@@ -20,6 +20,9 @@ export class CodeComponent {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  // Variable para almacenar el resultado de la búsqueda
+  resultado: any = null;
+
   // Función que se ejecuta al hacer clic en el botón "Buscar"
   search(): void {
     // Obtenemos los valores de los inputs directamente desde el DOM
@@ -38,5 +41,25 @@ export class CodeComponent {
     }
     // Mostramos el mensaje de carga
     this.loadingMessage = true;
+
+    // Hacemos una petición POST al backend con el código sanitizado
+    this.http.post<any>('http://localhost:4000/search', {
+      code: sanitizedCode
+    }).subscribe({
+
+      // Si la respuesta es exitosa
+      next: (response) => {
+        this.resultado = response;         // Guardamos el resultado recibido en la variable `resultado`
+        this.loadingMessage = false;       // Ocultamos el mensaje de carga
+      },
+
+      // Si ocurre un error en la petición
+      error: (error) => {
+        console.error('Error:', error);    // Mostramos el error en la consola
+        this.resultado = null;             // Limpiamos el resultado anterior (si lo había)
+        this.loadingMessage = false;       // Ocultamos el mensaje de carga
+        alert('Error al buscar el código.'); // Mostramos un mensaje al usuario
+      }
+    });
   }
 }
