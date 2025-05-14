@@ -4,12 +4,12 @@
 <br>
 <div class="blockLogin animate__animated animate__fadeIn animate__delay-1s">
     <label for="user" class="loginText ">User</label><br>
-    <input class="inputLogin " type="text" id="user" name="user" placeholder="Enter your User"><br>
+    <input class="inputLogin " #user type="text" id="user" name="user" placeholder="Enter your User"><br>
 
     <label for="password" class="loginText">Password</label><br>
-    <input class="inputLogin2" type="password" id="password" name="password" placeholder="Enter your Password"><br><br>
+    <input class="inputLogin2" #password type="password" id="password" name="password" placeholder="Enter your Password"><br><br>
 
-    <button class="bLogin animate__animated animate__pulse animate__infinite" id="login" routerLink="/mainPri">Log In</button>
+    <button class="bLogin animate__animated animate__pulse animate__infinite" id="login" (click)="login()">Log In</button>
 </div>
 
-<p id="loadingMessage" class="loadMessage animate__animated animate__flash">Loading...</p>
+<p id="loadingMessage" class="loadMessage animate__animated animate__flash" *ngIf="loadingMessage">Loading...</p>

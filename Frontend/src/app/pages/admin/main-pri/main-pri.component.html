@@ -6,19 +6,28 @@
         <input type="number" required class="inputPri" placeholder="Buscar">
     </div>
     <div class="priFlex2">
-        <button class="buttonPri animate__animated animate__pulse animate__infinite" routerLink="/history">Historial</button>
+        <button class="buttonPri animate__animated animate__pulse animate__infinite"
+            routerLink="/history">Historial</button>
     </div>
 </div>
 <h2 class="titleMain2 animate__animated animate__fadeInUp animate__delay-1s">Reservas Actuales: <span
         class="animate__animated animate__flash animate__delay-2s">Loading ...</span></h2>
-<div class="flexPri animate__animated animate__fadeInUp animate__delay-1s">
-    <div class="flexPri1">
-        <h4 class="flexTitlePri">Nombre de Ejemplo</h4>
-    </div>
-    <div class="flexPri2">
-        <button class="buttonPri3">Estado</button>
-    </div>
-    <div class="flexPri2">
-        <button class="buttonPri2 animate__animated animate__pulse animate__infinite" routerLink="/info">Ver más</button>
-    </div>
-</div>
+
+<ul>
+    <li *ngIf="cargando">Cargando docentes...</li>
+    <li *ngIf="error">{{ error }}</li>
+    <li *ngFor="let reserva of reservations">
+        <div class="flexPri animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="flexPri1">
+                <h4 class="flexTitlePri">{{reserva.name}}</h4>
+            </div>
+            <div class="flexPri2">
+                <button class="buttonPri3">Estado</button>
+            </div>
+            <div class="flexPri2">
+                <button class="buttonPri2 animate__animated animate__pulse animate__infinite" routerLink="/info">Ver
+                    más</button>
+            </div>
+        </div>
+    </li>
+</ul>

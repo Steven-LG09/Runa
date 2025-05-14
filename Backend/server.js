@@ -104,6 +104,67 @@ app.post('/form', async (req, res) => {
         });
     }
 });
+app.post('/login', async (req, res) => {
+    try {
+        const {
+            user,
+            password
+        } = req.body;
+
+        const sanitizedUser = purify.sanitize(user);
+        const sanitizedPassword = purify.sanitize(password);
+
+        if (!sanitizedUser || !sanitizedPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "Información requerida",
+            });
+        }
+
+        if (sanitizedUser == "admin" && sanitizedPassword == "test2025") {
+            res.json({
+                message: "Upload successful",
+                success: true,
+                redirectUrl: process.env.MAINPRI
+            });
+        } else {
+            res.json({
+                message: "Credenciales incorrectas",
+                success: false
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        });
+    }
+});
+app.get('/reserv', async (req, res) => {
+    try {
+        const reservations = await Form.find({}, {
+            email: 0,
+            phone: 0,
+            visitortype: 0,
+            date: 0,
+            time: 0,
+            quantity: 0,
+            walktype: 0,
+            comments: 0,
+            accesability: 0,
+            terms: 0,
+            notifications: 0,
+            status: 0,
+            _id: 0
+        });
+        res.json(reservations);
+    } catch (error) {
+        console.error("Error al obtener reservas:", error); // Esto te dará más información en los logs
+        res.status(500).json({
+            error: 'Error al obtener reservas',
+            message: error.message
+        });
+    }
+});
 app.post('/form2', async (req, res) => {
     try {
         const {

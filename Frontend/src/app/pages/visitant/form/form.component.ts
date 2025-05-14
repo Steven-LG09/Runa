@@ -26,12 +26,10 @@ export class FormComponent {
   @ViewChild('terms') termsRef!: ElementRef<HTMLInputElement>;
   @ViewChild('notifications') notificationsRef!: ElementRef<HTMLInputElement>;
 
-
   // Variable para mostrar u ocultar el mensaje de carga
   loadingMessage = false;
 
   constructor(private http: HttpClient, private router: Router) { }
-
 
   // Función que se ejecuta al hacer clic en el botón "Enviar"
   saveData(): void {
