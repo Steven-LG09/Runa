@@ -104,6 +104,68 @@ app.post('/form', async (req, res) => {
         });
     }
 });
+app.post('/form2', async (req, res) => {
+    try {
+        const {
+            name,
+            visitortype,
+            date,
+            time,
+            quantity,
+            walktype,
+            comments,
+            accesability
+        } = req.body;
+
+        const sanitizedQuantity = purify.sanitize(quantity);
+        const sanitizedComments = purify.sanitize(comments);
+
+        if (!sanitizedQuantity || !sanitizedComments) {
+            return res.status(400).json({
+                success: false,
+                message: "Información requerida",
+            });
+        }
+
+        // Buscar en la base de datos
+        const resultado = await Form.findOne({
+            name: name
+        });
+
+        if (!resultado) {
+            return res.status(404).json({
+                error: 'No encontrado'
+            });
+        }
+
+        const newEvaluation = new Form({
+            name: name,
+            email: resultado.email,
+            phone: resultado.phone,
+            visitortype: visitortype,
+            date: date,
+            time: time,
+            quantity: sanitizedQuantity,
+            walktype: walktype,
+            comments: sanitizedComments,
+            accesability: accesability,
+            terms: resultado.terms,
+            notifications: resultado.notifications,
+            status: "Pendiente"
+        });
+        await newEvaluation.save();
+
+        res.json({
+            message: "Upload successful",
+            success: true,
+            redirectUrl: process.env.FORM
+        });
+    } catch (error) {
+        res.status(500).json({
+            error: error.message
+        });
+    }
+});
 app.post('/search', async (req, res) => {
     try {
         const {

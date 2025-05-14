@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: 'reservMa', component: ReservMaComponent },
   { path: 'form', component: FormComponent},
   { path: 'code', component: CodeComponent},
-  { path: 'newReserv', component: NewReservComponent},
+  { path: 'newReserv/:name', component: NewReservComponent},
   { path: 'thanks', component: ThanksComponent},
   { path: 'login', component: LoginComponent},
   { path: 'mainPri', component: MainPriComponent},

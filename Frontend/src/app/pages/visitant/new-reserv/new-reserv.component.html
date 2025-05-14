@@ -1,11 +1,11 @@
 <h1 class="mainName animate__animated animate__fadeInDown">RUNA</h1>
 <p class="subTitle animate__animated animate__fadeIn">Reserva, Unidad, Naturaleza y Acceso</p>
 
-<p class="thanksText animate__animated animate__fadeIn animate__delay-1s">Hola [Aqui Nombre], qué bueno verte de
+<p class="thanksText animate__animated animate__fadeIn animate__delay-1s">Hola {{ nombre }}, qué bueno verte de
     nuevo</p>
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="tipoVisitante" class="formText">Tipo de visitante *</label>
-    <select id="tipoVisitante" name="tipoVisitante" required class="selectForm">
+    <select id="tipoVisitante" #visitorType name="tipoVisitante" required class="selectForm">
         <option value="">Seleccione...</option>
         <option value="individual">Individual</option>
         <option value="familiar">Grupo familiar</option>
@@ -17,12 +17,12 @@
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="fecha" class="formText">Fecha de la reserva *</label>
-    <input type="date" id="fecha" name="fecha" required class="selectForm"><br>
+    <input type="date" id="fecha" #date name="fecha" required class="selectForm"><br>
 </div>
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="hora" class="formText">Hora de entrada *</label>
-    <select id="hora" name="hora" required class="selectForm">
+    <select id="hora" #time name="hora" required class="selectForm">
         <option value="">Seleccione...</option>
         <option value="09:00">09:00</option>
         <option value="10:00">10:00</option>
@@ -35,12 +35,12 @@
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="cantidad" class="formText">Cantidad de personas *</label>
-    <input type="number" id="cantidad" name="cantidad" min="1" required class="inputForm" placeholder="Su Cantidad"><br>
+    <input type="number" #quantity id="cantidad" name="cantidad" min="1" required class="inputForm" placeholder="Su Cantidad"><br>
 </div>
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
     <label for="tipoRecorrido" class="formText">Tipo de recorrido *</label>
-    <select id="tipoRecorrido" name="tipoRecorrido" required class="selectForm">
+    <select id="tipoRecorrido" #walkType name="tipoRecorrido" required class="selectForm">
         <option value="">Seleccione...</option>
         <option value="libre">Recorrido libre</option>
         <option value="guiado">Visita guiada</option>
@@ -51,13 +51,15 @@
 
 <div class="blockForm animate__animated animate__fadeInUp animate__delay-1s">
     <label for="comentarios" class="formText2">Comentarios adicionales</label><br>
-    <textarea id="comentarios" name="comentarios" rows="3" class="textTareaForm"></textarea>
+    <textarea id="comentarios" #comments name="comentarios" rows="3" class="textTareaForm"></textarea>
     <div class="checkbox-group">
-        <input type="checkbox" id="accesibilidad" name="accesibilidad">
+        <input type="checkbox" #accesability id="accesibilidad" name="accesibilidad">
         <label for="accesibilidad" class="formText2">Requiere accesibilidad especial</label>
     </div>
 </div>
 
 <div class="formLines animate__animated animate__fadeInUp animate__delay-1s">
-    <button class="buttonForm animate__animated animate__pulse animate__infinite" routerLink="/thanks">Reservar de Nuevo</button>
+    <button class="buttonForm animate__animated animate__pulse animate__infinite" (click)="reserVation()">Reservar de Nuevo</button>
 </div>
+
+<div *ngIf="loadingMessage">Cargando...</div>
