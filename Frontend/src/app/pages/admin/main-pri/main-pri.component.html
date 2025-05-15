@@ -11,10 +11,10 @@
     </div>
 </div>
 <h2 class="titleMain2 animate__animated animate__fadeInUp animate__delay-1s">Reservas Actuales: <span
-        class="animate__animated animate__flash animate__delay-2s">Loading ...</span></h2>
+        class="animate__animated animate__flash animate__delay-2s">{{ totalReservas }}</span></h2>
 
-<ul>
-    <li *ngIf="cargando">Cargando docentes...</li>
+<ul class="list">
+    <li *ngIf="cargando" class="loading">Cargando reservas...</li>
     <li *ngIf="error">{{ error }}</li>
     <li *ngFor="let reserva of reservations">
         <div class="flexPri animate__animated animate__fadeInUp animate__delay-1s">
@@ -25,7 +25,8 @@
                 <button class="buttonPri3">Estado</button>
             </div>
             <div class="flexPri2">
-                <button class="buttonPri2 animate__animated animate__pulse animate__infinite" routerLink="/info">Ver
+                <button class="buttonPri2 animate__animated animate__pulse animate__infinite"
+                    [routerLink]="['/info', reserva.name]">Ver
                     más</button>
             </div>
         </div>

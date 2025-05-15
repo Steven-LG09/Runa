@@ -20,6 +20,6 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'mainPri', component: MainPriComponent},
   { path: 'history', component: HistoryComponent},
-  { path: 'info', component: InfoComponent}
+  { path: 'info/:name', component: InfoComponent}
   
 ];

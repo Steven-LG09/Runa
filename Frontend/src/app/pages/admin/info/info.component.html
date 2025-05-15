@@ -3,52 +3,58 @@
 
 <h2 class="titleMainForm animate__animated animate__fadeInDown">Información de la Reserva</h2>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Nombre completo</p>
-    <p class="reserText2">Example Text</p>
-</div>
+<div *ngIf="cargando">Cargando datos...</div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Correo electrónico</p>
-    <p class="reserText2">Example Text</p>
-</div>
+<div *ngIf="error" class="error">{{ error }}</div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Teléfono</p>
-    <p class="reserText2">Example Text</p>
-</div>
+<div *ngIf="documento">
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Nombre completo</p>
+        <p class="reserText2">{{ documento.name }}</p>
+    </div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Tipo de visitante</p>
-    <p class="reserText2">Example Text</p>
-</div>
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Correo electrónico</p>
+        <p class="reserText2">{{ documento.email }}</p>
+    </div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Fecha de la reserva</p>
-    <p class="reserText2">Example Text</p>
-</div>
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Teléfono</p>
+        <p class="reserText2">{{ documento.phone }}</p>
+    </div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Hora de entrada</p>
-    <p class="reserText2">Example Text</p>
-</div>
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Tipo de visitante</p>
+        <p class="reserText2">{{ documento.visitortype }}</p>
+    </div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Cantidad de personas</p>
-    <p class="reserText2">Example Text</p>
-</div>
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Fecha de la reserva</p>
+        <p class="reserText2">{{ documento.date }}</p>
+    </div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Tipo de recorrido</p>
-    <p class="reserText2">Example Text</p>
-</div>
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Hora de entrada</p>
+        <p class="reserText2">{{ documento.time }}</p>
+    </div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Comentarios adicionales</p>
-    <p class="reserText2">Example Text</p>
-</div>
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Cantidad de personas</p>
+        <p class="reserText2">{{ documento.quantity }}</p>
+    </div>
 
-<div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
-    <p class="reserText">Requiere accesibilidad especial</p>
-    <p class="reserText2">Example Text</p>
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Tipo de recorrido</p>
+        <p class="reserText2">{{ documento.walktype }}</p>
+    </div>
+
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Comentarios adicionales</p>
+        <p class="reserText2">{{ documento.comments }}</p>
+    </div>
+
+    <div class="reserLines animate__animated animate__fadeInUp animate__delay-1s">
+        <p class="reserText">Requiere accesibilidad especial</p>
+        <p class="reserText2">{{ documento.accesability ? 'SI' : 'NO' }}</p>
+    </div>
 </div>

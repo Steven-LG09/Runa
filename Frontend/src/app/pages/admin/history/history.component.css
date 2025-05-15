@@ -64,6 +64,7 @@
 .flexPri {
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 2%;
     display: flex;
     background-color: #7CA982;
     border-radius: 15px;
@@ -81,9 +82,31 @@
     text-shadow: 3px 3px 5px #5F8B4C;
 }
 
+.loading {
+    color: #328E6E;
+    text-shadow: 3px 3px 5px #5F8B4C;
+    text-align: center;
+    font-size: 15px;
+}
+.list {
+    list-style-type: none;
+}
+
 @media (max-width: 767px) {
-    .inputPri,
+
+    .buttonPri,
+    .inputPri {
+        width: 100px;
+    }
+
     .buttonPri2 {
         width: 100px;
+        height: 90px;
+    }
+
+    .buttonPri3 {
+        width: 80px;
+        margin-right: 10px;
+        height: 90px;
     }
 }

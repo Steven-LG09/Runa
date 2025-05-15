@@ -13,6 +13,13 @@
     font-size: 11px;
 }
 
+.loading {
+    color: #328E6E;
+    text-shadow: 3px 3px 5px #5F8B4C;
+    text-align: center;
+    font-size: 15px;
+}
+
 .priFlex {
     padding-left: 5%;
     padding-right: 5%;
@@ -82,12 +89,17 @@
 .flexPri {
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 2%;
     display: flex;
-    background-color: #7CA982;
+    background-color: #2F5D50;
     border-radius: 15px;
     box-shadow: 0 5px 7px 0 #2F5D50, 0 0 15px 0 #328E6E;
     justify-content: space-between;
     padding: 1%;
+}
+
+.list {
+    list-style-type: none;
 }
 
 .flexPri1 {
@@ -95,20 +107,25 @@
 }
 
 .flexTitlePri {
-    color: #2F5D50;
+    color: #EFECE3;
     text-shadow: 3px 3px 5px #5F8B4C;
 }
 
 @media (max-width: 767px) {
 
     .buttonPri,
-    .inputPri,
+    .inputPri {
+        width: 100px;
+    }
+
     .buttonPri2 {
         width: 100px;
+        height: 90px;
     }
 
     .buttonPri3 {
         width: 80px;
         margin-right: 10px;
+        height: 90px;
     }
 }

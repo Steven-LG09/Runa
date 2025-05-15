@@ -17,7 +17,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    background-color: #328E6E;
+    background-color: #2F5D50;
     width: 25%;
     border-radius: 15px;
     padding: 15px;
@@ -25,7 +25,7 @@
 }
 
 .loginText {
-    color: rgb(54, 51, 51);
+    color: white;
     text-shadow: 3px 3px 5px #5F8B4C;
     font-size: 17px;
 }

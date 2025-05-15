@@ -11,36 +11,43 @@ import { CommonModule } from '@angular/common';
   styleUrl: './main-pri.component.css'
 })
 export class MainPriComponent implements OnInit {
-
-  // Arreglo donde se guardará la lista de reservaciones recibida desde el backend
   reservations: any[] = [];
-
-  // Bandera para mostrar estado de carga
   cargando = true;
-
-  // Mensaje de error si ocurre algo durante la carga de datos
   error = '';
+  totalReservas = 0; // Nueva propiedad para almacenar el total
 
-  // Inyecta el servicio HttpClient en el constructor (Angular lo provee automáticamente)
   constructor(private http: HttpClient) { }
 
-  // Método que se ejecuta automáticamente cuando el componente se inicializa
   ngOnInit(): void {
-    // Llama al backend usando HttpClient con método GET
-    this.http.get<any[]>('http://localhost:4000/reserv') // Reemplaza con tu URL real
+    this.obtenerReservas();
+    this.obtenerConteoReservas(); // Llama la función para contar
+  }
+
+  obtenerReservas() {
+    this.http.get<any[]>('http://localhost:4000/reserv')
       .subscribe({
-        // Si la petición es exitosa, se ejecuta esta función
         next: (data) => {
-          this.reservations = data;     // Guarda los datos en el arreglo
-          this.cargando = false;    // Ya no está cargando
+          this.reservations = data;
+          this.cargando = false;
         },
-        // Si ocurre un error en la petición, se ejecuta esto
         error: (err) => {
-          console.error('Error al obtener reservas:', err); // Imprime error en consola
-          this.error = 'No se encontraron reservas.';       // Muestra mensaje de error en la interfaz
-          this.cargando = false;                            // Termina el estado de carga
+          console.error('Error al obtener reservas:', err);
+          this.error = 'No se encontraron reservas.';
+          this.cargando = false;
         }
       });
   }
 
+  obtenerConteoReservas() {
+    this.http.get<{ total: number }>('http://localhost:4000/reserv/count')
+      .subscribe({
+        next: (data) => {
+          this.totalReservas = data.total;
+        },
+        error: (err) => {
+          console.error('Error al contar reservas:', err);
+        }
+      });
+  }
 }
+

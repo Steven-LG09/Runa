@@ -38,7 +38,24 @@ const formSchema = new mongoose.Schema({
     status: String
 });
 
+const historySchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    phone: String,
+    visitortype: String,
+    date: String,
+    time: String,
+    quantity: String,
+    walktype: String,
+    comments: String,
+    accesability: String,
+    terms: String,
+    notifications: String,
+    status: String
+});
+
 const Form = mongoose.models[process.env.COLLECTION_NAME] || mongoose.model(process.env.COLLECTION_NAME, formSchema);
+const History = mongoose.models[process.env.COLLECTION_NAME2] || mongoose.model(process.env.COLLECTION_NAME2, historySchema);
 
 const window = new JSDOM("").window;
 const purify = DOMPurify(window);
@@ -165,6 +182,32 @@ app.get('/reserv', async (req, res) => {
         });
     }
 });
+app.get('/reserv2', async (req, res) => {
+    try {
+        const reservations = await History.find({}, {
+            email: 0,
+            phone: 0,
+            visitortype: 0,
+            date: 0,
+            time: 0,
+            quantity: 0,
+            walktype: 0,
+            comments: 0,
+            accesability: 0,
+            terms: 0,
+            notifications: 0,
+            status: 0,
+            _id: 0
+        });
+        res.json(reservations);
+    } catch (error) {
+        console.error("Error al obtener reservas:", error); // Esto te dará más información en los logs
+        res.status(500).json({
+            error: 'Error al obtener reservas',
+            message: error.message
+        });
+    }
+});
 app.post('/form2', async (req, res) => {
     try {
         const {
@@ -259,6 +302,58 @@ app.post('/search', async (req, res) => {
         console.error('Error en búsqueda:', err);
         res.status(500).json({
             error: 'Error en la busqueda'
+        });
+    }
+});
+app.get('/info', async (req, res) => {
+  try {
+    const name = req.query.name;
+
+    // Buscar en la primera colección
+    let documento = await Form.findOne({ name });
+
+    // Si no se encuentra, buscar en la segunda colección
+    if (!documento) {
+      documento = await History.findOne({ name });
+    }
+
+    // Si aún no se encuentra, devolver 404
+    if (!documento) {
+      return res.status(404).json({ error: 'No encontrado en ninguna colección' });
+    }
+
+    // Si se encuentra en alguna, devolverlo
+    res.json(documento);
+
+  } catch (err) {
+    console.error('Error en búsqueda:', err);
+    res.status(500).json({ error: 'Error en la búsqueda' });
+  }
+});
+
+app.get("/reserv/count", async (req, res) => {
+    try {
+        const total = await Form.countDocuments();
+        res.json({
+            total
+        });
+    } catch (error) {
+        console.error('Error al contar documentos:', error);
+        res.status(500).json({
+            error: 'Error al contar documentos'
+        });
+    }
+});
+app.get("/reserv2/count", async (req, res) => {
+    try {
+        const total = await History.countDocuments();
+        res.json({
+            total
+        });
+    } catch (error) {
+        console.error('Error al contar documentos:', error);
+        res.status(500).json({
+            error: 'Error al contar documentos'
         });
     }
 });
