@@ -1,4 +1,4 @@
-# 🌿 Natural Places Reservation System + On-Site Display Interface
+# 🌿 Natural Places Reservation System 
 
 A digital reservation platform built to **enhance visitor experiences** and **optimize capacity management** in **natural parks, eco-reserves, and protected areas**. The system includes both a **user-friendly mobile/web interface** for reservations.
 ---
