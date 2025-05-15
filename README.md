@@ -26,4 +26,9 @@ Natural areas face increasing pressure from tourism. This system helps preserve 
 
 ---
 
+## Interface Images
+
+![Alt text](Interface_Images/image1.png)
+
+
 ## 📦 “Leave nothing but footprints, take nothing but memories.” – Anonymous
