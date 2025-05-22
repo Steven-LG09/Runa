@@ -23,6 +23,10 @@ export class MainPriComponent implements OnInit {
     this.obtenerConteoReservas(); // Llama la función para contar
   }
 
+  mostrarMensaje() {
+    alert('Estado: Pendiente');
+  }
+
   obtenerReservas() {
     this.http.get<any[]>('http://localhost:4000/reserv')
       .subscribe({

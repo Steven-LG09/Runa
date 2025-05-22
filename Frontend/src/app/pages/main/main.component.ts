@@ -12,4 +12,8 @@ import { RouterModule } from '@angular/router';
 })
 export class MainComponent {
   images = [0, 1, 2, 3, 4, 5, 6, 7];
+
+    mostrarMensaje() {
+    alert('¡Acción No Disponible!');
+  }
 }
